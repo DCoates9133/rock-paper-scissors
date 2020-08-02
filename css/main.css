@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url("reset.css");
+
+#title {
+    padding: 50px 0 0 0;
+    margin: 30px;
+}
+#title h1 {
+    font-size: 40px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+#scores {
+    margin: 0 0 20px 0;
+    
+}
+
+#scores h3 {
+    font-size: 25px;
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-weight: 500;
+    
+}
+
+#scores .score {
+    color: #d3de32;
+}
+
+#scoremessage {
+    margin: 0 0 20px 0;
+    color: #006a71;
+    font-weight: 500;
+}
+
+#selection button {
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background: #cbeaed;
+    padding: 10px 20px;
+    margin: 0 20px 0 0;
+    font-weight: 500;
+}
+
+#selection button .fa {
+    background: #cbeaed;
+    font-weight: 700;
+}
