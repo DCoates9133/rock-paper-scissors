@@ -1,9 +1,32 @@
 
 const playerScore = document.querySelector('.playerscore');
 const computerScore = document.querySelector('.computerscore');
-const roundMessage = document.querySelector('#scoremessage');
+const roundMessage = document.querySelector('.message');
 const selectButtons = document.querySelectorAll('button');
 
+const scores = {
+    player: 0,
+    computer: 0
+}
+playerScore.textContent = scores.player;
+computerScore.textContent = scores.computer;
+// update player score
+const updatePlayerScore = (score) => {
+    playerScore.textContent = ++score.player;
+}
+// update computer score
+const updateComputerScore = (score) => {
+    computerScore.textContent = ++score.computer;
+}
+// reset scores 
+const reset = () => {
+    scores.player = 0
+    scores.computer = 0
+    playerScore.textContent = scores.player
+    computerScore.textContent = scores.computer
+    roundMessage.textContent = ''
+
+}
 // randomly selects rock, paper, or scissors
 const computerSelection= () => {
     const computerOptions = ['rock','paper','scissors'];
@@ -14,10 +37,16 @@ const computerSelection= () => {
     const selection = e.id;
     return selection;
  }
-//  determines if player or computer is winner
- const winner = (player,computer) => {
-     let playerWin = false;
-     let computerWin = false;
+//  Render message on page if player win or lose round
+ const winnerMessage = (message) => {
+     roundMessage.textContent = message
+ }
+
+//  determines if player or computer is winner and update score 
+ const winner = (player,computer,score) => {
+     let playerWin = false,
+        computerWin = false;
+
     switch (true) {
         case player == 'rock' && computer == 'paper':
             computerWin = true;
@@ -41,17 +70,21 @@ const computerSelection= () => {
             break;
     }
     if(playerWin) {
-       return `YOU WIN! ${player} beats ${computer}`;
+        updatePlayerScore(score)
+       message = `YOU WIN! ${player} beats ${computer}`;
     } else if(computerWin) {
-       return `YOU LOSE! ${computer} beats ${player}`;
+        updateComputerScore(score)
+       message = `YOU LOSE! ${computer} beats ${player}`;
     } else {
-        return "It's a DRAW";
-    }  
+        message = "It's a DRAW";
+    } 
+    winnerMessage(message);
  }
 
  selectButtons.forEach(button => {
     button.addEventListener('click', () => {
-        winner(playerSelection(button), computerSelection());
+        button.id == 'reset' ? reset() :
+        winner(playerSelection(button), computerSelection(),scores);
     })
 })
 
