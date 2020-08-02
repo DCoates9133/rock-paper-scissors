@@ -30,6 +30,10 @@
 
 #scoremessage {
     margin: 0 0 20px 0;
+   
+}
+
+#scoremessage .message {
     color: #006a71;
     font-weight: 500;
 }
